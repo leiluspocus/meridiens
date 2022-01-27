@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <div class="home__actions">
+      <button>🔮</button>
+      <button @click="showCard">Révéler</button>
+    </div>
     <Point
+      ref="point"
       :id="'18E'"
       :name="'Base du Sein'"
       :roles="['pouet', 'er']"
@@ -20,5 +24,27 @@ export default {
   components: {
     Point,
   },
+  data() {
+    return {
+      isCardVisible: false
+    };
+  },
+  methods: {
+    showCard() {
+      this.isCardVisible = !this.isCardVisible;
+      this.$refs.point.changeVisibility(this.isCardVisible);
+    }
+  }
 };
 </script>
+
+<style scoped>
+.home {
+  width: 50%;
+  margin: 0 auto;
+}
+.home__actions {
+  display: flex;
+  justify-content: space-around;
+}
+</style>
