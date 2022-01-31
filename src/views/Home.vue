@@ -1,16 +1,16 @@
 <template>
   <div class="home">
     <div class="home__actions">
-      <button>🔮</button>
+      <button @click="randomize">🔮</button>
       <button @click="showCard">Révéler</button>
     </div>
     <Point
       ref="point"
-      :id="'18E'"
-      :name="'Base du Sein'"
-      :roles="['pouet', 'er']"
-      :localization="'A deux cun de la ligne médiane'"
-      :picture="'http://orempixum;com'"
+      :id="point.id"
+      :name="point.name"
+      :roles="point.roles"
+      :localization="point.localization"
+      :picture="point.picture"
     />
   </div>
 </template>
@@ -26,13 +26,25 @@ export default {
   },
   data() {
     return {
-      isCardVisible: false
+      isCardVisible: false,
+      randomIndex: 0
     };
+  },
+  computed: {
+    point() {
+      return this.$store.state.points[this.randomIndex];
+    }
   },
   methods: {
     showCard() {
       this.isCardVisible = !this.isCardVisible;
       this.$refs.point.changeVisibility(this.isCardVisible);
+    },
+    randomize() {
+      this.randomIndex = Math.floor(Math.random() * this.$store.state.points.length);
+      if ( this.randomIndex > this.$store.state.points.length) {
+        this.randomIndex = 0;
+      }
     }
   }
 };
