@@ -9,14 +9,14 @@ const points = [
 		name: 'Fui',
 		roles: [ 'Blabla', 'Blibli', 'Blublu' ],
 		localization: 'tlkdjfg',
-		picture: 'erert'
+		picture: 'https://placekitten.com/g/200/200'
 	},
 	{
 		id: '14VB',
 		name: 'Fui',
 		roles: [ 'Blabla', 'Blibli', 'Blublu' ],
 		localization: 'tlkdjfg',
-		picture: 'erert'
+		picture: 'https://placekitten.com/g/150/150'
 	}
 ];
 export default new Vuex.Store({
